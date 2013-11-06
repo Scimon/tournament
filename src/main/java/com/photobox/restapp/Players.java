@@ -2,9 +2,7 @@ package com.photobox.restapp;
 
 import com.photobox.appclasses.Player;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -18,6 +16,34 @@ public class Players {
     public List<Player> getPlayers() {
         List<Player> PlayerList = Player.getAll();
         return PlayerList;
+    }
+
+    @GET @Path( "{playerid}")
+    @Produces( MediaType.APPLICATION_JSON )
+    public Player getPlayer(@PathParam("playerid") String id ) {
+        return Player.load( id );
+    }
+
+    @DELETE @Path( "{playerid}")
+    public void removePlayer(@PathParam("playerid") String id ) {
+        Player.delete( Player.load( id ) );
+    }
+
+    @PUT @Path( "{playerid}")
+    @Produces( MediaType.APPLICATION_JSON )
+    @Consumes( MediaType.APPLICATION_JSON )
+    public Player updatePlayer(@PathParam("playerid") String id, Player update ) {
+        Player p = Player.load( id );
+        p.update( update );
+        return p;
+    }
+
+    @POST
+    @Consumes( MediaType.APPLICATION_JSON )
+    @Produces( MediaType.APPLICATION_JSON )
+    public Player addPlayer( Player p ) {
+        p.save();
+        return p;
     }
 
     /**

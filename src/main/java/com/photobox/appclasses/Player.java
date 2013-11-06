@@ -77,6 +77,16 @@ public class Player {
         return this.id;
     }
 
+     public Player update( Player update ) {
+        CouchDbConnector conn = DataLayer.connect( "players" );
+        if ( update.firstName != null ) firstName = update.firstName;
+        if ( update.lastName != null ) lastName = update.lastName;
+
+        conn.update(this);
+
+        return this;
+    }
+
     public static void delete( Player p ) {
         CouchDbConnector conn = DataLayer.connect( "players" );
         conn.delete( p );
@@ -86,6 +96,7 @@ public class Player {
             throwable.printStackTrace();
         }
     }
+
 
     public static Player load( String id ) {
         CouchDbConnector conn = DataLayer.connect( "players" );
