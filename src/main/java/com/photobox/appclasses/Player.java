@@ -80,7 +80,7 @@ public class Player {
      public Player update( Player update ) {
         CouchDbConnector conn = DataLayer.connect( "players" );
         if ( ! update.firstName.equals( "" ) ) firstName = update.firstName;
-        if ( update.lastName.equals( "" ) ) lastName = update.lastName;
+        if ( ! update.lastName.equals( "" ) ) lastName = update.lastName;
         if ( update.dateOfBirth != null ) dateOfBirth = update.dateOfBirth;
 
         conn.update(this);
