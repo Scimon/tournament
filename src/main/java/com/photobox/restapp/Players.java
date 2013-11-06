@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Path("players")
-public class Players {
+class Players {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
