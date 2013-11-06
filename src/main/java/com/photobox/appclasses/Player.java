@@ -1,7 +1,7 @@
 package com.photobox.appclasses;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,28 +14,33 @@ import java.util.Date;
 public class Player {
 	public String firstName;
 	public String lastName;
-	public Date dateOfBirth;
+	public Calendar dateOfBirth;
 
 	public Player() {
 	}
 
 	public Player(String name) {
-		this.firstName = name;
+		firstName = name;
+        lastName = "";
+        dateOfBirth = null;
+
 	}
 
-	public Player(String name, Date date) {
-		this.firstName = name;
-		this.dateOfBirth = date;
+	public Player(String name, Calendar date) {
+		firstName = name;
+        lastName = "";
+		dateOfBirth = date;
 	}
 
 	public Player(String first, String last) {
-		this.firstName = first;
-		this.lastName = last;
+		firstName = first;
+		lastName = last;
+        dateOfBirth = null;
 	}
 
-	public Player(String first, String last, Date date) {
-		this.firstName = first;
-		this.lastName = last;
-		this.dateOfBirth = date;
+	public Player(String first, String last, Calendar date) {
+		firstName = first;
+		lastName = last;
+		dateOfBirth = date;
 	}
 }

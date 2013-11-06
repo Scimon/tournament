@@ -7,25 +7,19 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 @Path("players")
-class Players {
+public class Players {
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Player> getPlayersJSON() {
-        return this.getPlayers();
-    }
-    @Produces(MediaType.APPLICATION_XML)
-    public List<Player> getPlayersXML() {
-        return this.getPlayers();
-    }
-
-    private List<Player> getPlayers() {
+    @Produces( MediaType.APPLICATION_JSON )
+    public List<Player> getPlayers() {
         List<Player> PlayerList = new ArrayList<Player>();
-        PlayerList.add( new Player( "Simon", "Proctor") );
+        PlayerList.add( new Player( "Simon", "Proctor", new GregorianCalendar( 1973, 10, 9 ) ) );
         PlayerList.add( new Player( "Claudio", "Ferrete") );
+        PlayerList.add( new Player( "Joaquin") );
         return PlayerList;
     }
 
