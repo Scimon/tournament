@@ -17,6 +17,9 @@ public class Player {
 	public Calendar dateOfBirth;
 
 	public Player() {
+        firstName = "";
+        lastName = "";
+        dateOfBirth = null;
 	}
 
 	public Player(String name) {
