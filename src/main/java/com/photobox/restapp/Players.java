@@ -14,7 +14,15 @@ class Players {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Player> getPlayers() {
+    public List<Player> getPlayersJSON() {
+        return this.getPlayers();
+    }
+    @Produces(MediaType.APPLICATION_XML)
+    public List<Player> getPlayersXML() {
+        return this.getPlayers();
+    }
+
+    private List<Player> getPlayers() {
         List<Player> PlayerList = new ArrayList<Player>();
         PlayerList.add( new Player( "Simon", "Proctor") );
         PlayerList.add( new Player( "Claudio", "Ferrete") );
