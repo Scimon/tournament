@@ -14,8 +14,7 @@ public class Players {
     @GET
     @Produces( MediaType.APPLICATION_JSON )
     public List<Player> getPlayers() {
-        List<Player> PlayerList = Player.getAll();
-        return PlayerList;
+        return Player.getAll();
     }
 
     @GET @Path( "{playerid}")

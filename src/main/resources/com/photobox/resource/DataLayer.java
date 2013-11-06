@@ -18,7 +18,6 @@ import java.net.MalformedURLException;
 public class DataLayer {
     private static HttpClient client;
     private static CouchDbInstance instance;
-    public static CouchDbConnector conn;
 
     public static CouchDbConnector connect( String db ) {
         try {
@@ -26,8 +25,7 @@ public class DataLayer {
                 client = new StdHttpClient.Builder().url("http://localhost:5984").build();
                 instance = new StdCouchDbInstance(client);
             }
-            CouchDbConnector conn = instance.createConnector( db , true);
-            return conn;
+            return instance.createConnector( db , true);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

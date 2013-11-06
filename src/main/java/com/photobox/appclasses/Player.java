@@ -64,10 +64,7 @@ public class Player {
 	}
 
     public Boolean equals( Player p ) {
-        if ( ! firstName.equals( p.firstName ) ) return false;
-        if ( ! lastName.equals( p.lastName ) ) return false;
-        if ( ! dateOfBirth.equals( p.dateOfBirth ) ) return false;
-        return true;
+        return firstName.equals( p.firstName ) && lastName.equals( p.lastName ) && dateOfBirth.equals(p.dateOfBirth);
     }
 
     public String save() {
@@ -91,11 +88,6 @@ public class Player {
     public static void delete( Player p ) {
         CouchDbConnector conn = DataLayer.connect( "players" );
         conn.delete( p );
-        try {
-            p.finalize();
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
     }
 
 
