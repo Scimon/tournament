@@ -16,10 +16,7 @@ public class Players {
     @GET
     @Produces( MediaType.APPLICATION_JSON )
     public List<Player> getPlayers() {
-        List<Player> PlayerList = new ArrayList<Player>();
-        PlayerList.add( new Player( "Simon", "Proctor", new GregorianCalendar( 1973, 10, 9 ) ) );
-        PlayerList.add( new Player( "Claudio", "Ferrete") );
-        PlayerList.add( new Player( "Joaquin") );
+        List<Player> PlayerList = Player.getAll();
         return PlayerList;
     }
 

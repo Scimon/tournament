@@ -1,9 +1,12 @@
 package com.photobox.resource;
 
-import com.mongodb.DB;
-import com.mongodb.MongoClient;
+import org.ektorp.CouchDbConnector;
+import org.ektorp.CouchDbInstance;
+import org.ektorp.http.HttpClient;
+import org.ektorp.http.StdHttpClient;
+import org.ektorp.impl.StdCouchDbInstance;
 
-import java.net.UnknownHostException;
+import java.net.MalformedURLException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,15 +16,21 @@ import java.net.UnknownHostException;
  * Data layer for saving and restoring stuff
  */
 public class DataLayer {
-    static private MongoClient client;
-    static private DB db;
+    private static HttpClient client;
+    private static CouchDbInstance instance;
+    public static CouchDbConnector conn;
 
-    public DataLayer() {
+    public static CouchDbConnector connect( String db ) {
         try {
-            client = client == null ? new MongoClient( "localhost" ) : client;
-        } catch (UnknownHostException e) {
+            if ( client == null ) {
+                client = new StdHttpClient.Builder().url("http://localhost:5984").build();
+                instance = new StdCouchDbInstance(client);
+            }
+            CouchDbConnector conn = instance.createConnector( db , true);
+            return conn;
+        } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        db = db == null ? client.getDB( "tournaments" ) : db;
+        return null;
     }
 }
