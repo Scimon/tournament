@@ -1,5 +1,7 @@
 package com.photobox.appclasses;
 
+import com.photobox.resource.DataLayer;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Calendar;
 
@@ -15,14 +17,17 @@ public class Player {
 	public String firstName;
 	public String lastName;
 	public Calendar dateOfBirth;
+    private DataLayer dbLayer;
 
 	public Player() {
+        dbLayer = new DataLayer();
         firstName = "";
         lastName = "";
         dateOfBirth = null;
 	}
 
 	public Player(String name) {
+        dbLayer = new DataLayer();
 		firstName = name;
         lastName = "";
         dateOfBirth = null;
@@ -30,19 +35,22 @@ public class Player {
 	}
 
 	public Player(String name, Calendar date) {
+        dbLayer = new DataLayer();
 		firstName = name;
         lastName = "";
 		dateOfBirth = date;
 	}
 
 	public Player(String first, String last) {
+        dbLayer = new DataLayer();
 		firstName = first;
 		lastName = last;
         dateOfBirth = null;
 	}
 
 	public Player(String first, String last, Calendar date) {
-		firstName = first;
+        dbLayer = new DataLayer();
+        firstName = first;
 		lastName = last;
 		dateOfBirth = date;
 	}
