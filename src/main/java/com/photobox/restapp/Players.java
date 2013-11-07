@@ -4,8 +4,6 @@ import com.photobox.appclasses.Player;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 @Path("players")
